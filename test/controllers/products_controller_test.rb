@@ -9,11 +9,15 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
     get products_url
     assert_response :success
+    assert_select 'tbody tr', minimum: 3
+    assert_select 'h2', 'Programming Ruby 1.9'
+    assert_select 'h2', @product.title
   end
 
   test "should get new" do
     get new_product_url
     assert_response :success
+    assert_select 'form'
   end
 
   test "should create product" do
@@ -32,6 +36,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   test "should get edit" do
     get edit_product_url(@product)
     assert_response :success
+    assert_select 'form'
   end
 
   test "should update product" do
@@ -46,4 +51,5 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to products_url
   end
+
 end
