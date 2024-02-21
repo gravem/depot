@@ -28,7 +28,7 @@
               </p>
 
               <div class="mt-3">
-                <%= number_to_currency(product.price) %>
+                <%= number_to_currency(product.price, unit: "kr", format: "%n %u") %>
               </div>
             </div>
           </li>
